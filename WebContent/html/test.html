@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<button onclick="val()">value가져오기</button>
+<script>
+function val(){
+var xhr = new XMLHttpRequest();
+xhr.open('GET','/test?list=true');
+xhr.onreadystatechange = function(){
+	if(xhr.readyState==4){
+		var strs = JSON.parse(xhr.responseText);
+		for(var st in strs){
+		alert(st);
+		}
+	}
+}
+xhr.send();
+}
+</script>
+</body>
+</html>
