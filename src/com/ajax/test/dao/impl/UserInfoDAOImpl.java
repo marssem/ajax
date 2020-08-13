@@ -157,6 +157,7 @@ public class UserInfoDAOImpl implements UserInfoDAO {
 				ui.put("ui_email", rs.getString("ui_email"));
 				ui.put("ui_credat", rs.getString("ui_credat"));
 				ui.put("ui_nickname", rs.getString("ui_nickname"));
+				
 			}
 			return ui;
 		} catch (SQLException e) {
@@ -191,8 +192,9 @@ public class UserInfoDAOImpl implements UserInfoDAO {
 				ui.put("ui_email", rs.getString("ui_email"));
 				ui.put("ui_credat", rs.getString("ui_credat"));
 				ui.put("ui_nickname", rs.getString("ui_nickname"));
+				return ui; //null인지 아닌지 판단할 것이라면 이것이 좋다.
 			}
-			return ui;
+		//	return ui;//size로 판단할 것이라면 이것이 좋고
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {

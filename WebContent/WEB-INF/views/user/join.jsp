@@ -7,13 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<script >
-function ff(a){
-	if(a==null){
-		return false;
-	}
-	
-}
+<script>
+
+
 function checkValue(){
 	var ui_id = document.querySelector('#ui_id');
 	if(ui_id.value.trim().length<4){
@@ -67,9 +63,28 @@ function checkValue(){
 	}
 
 }
+function checkId(){
+	var id = document.querySelector('#ui_id').value;
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET','/user/checkid?ui_id='+id);
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState==4){
+			if(xhr.status==200){
+				var res = JSON.parse(xhr.responseText);
+				alert(res.msg);
+				if(res.result=='true'){
+					isChecked = true;
+				}
+				
+			}
+		}
+	}
+	xhr.send();
+}
 </script>
 <form action="/user/join" method="post" onsubmit="return checkValue()">
-	ID : <input type="text" name="ui_id" id="ui_id"> <button>중복확인</button><br>
+	ID : <input type="text" name="ui_id" id="ui_id"> 
+	<button type="button" onclick="checkId()">중복확인</button><br>
 	PWD : <input type="password" name="ui_pwd" id="ui_pwd"><br>
 	이름 : <input type="text" name="ui_name" id="ui_name"><br>
 	age : <input type="number" name="ui_age" id="ui_age"><br>

@@ -51,4 +51,14 @@ public static void main(String[] args) {
 	map.put("ui_nickname",2);
 	System.out.println(us.joinUserInfo(map));
 }
+
+@Override
+public Map<String, Object> checkId(String uiId) {
+	Map<String,Object> rMap = new HashMap<>();
+	rMap.put("msg", "이미 있는 아이디 입니다.");
+	if(uiDao.selectUserInfoByUiId(uiId)==null) {
+		rMap.put("msg", "가입이 가능한 아이디 입니다.");
+	}
+	return rMap;
+}
 }

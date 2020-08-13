@@ -11,7 +11,7 @@
 
  ajax index<br>
 <c:if test="${sessionScope.id == null }">
-<a href="/views/login">
+<a href="/views/user/login">
 <button>로그인</button></a>
 </c:if>
 
