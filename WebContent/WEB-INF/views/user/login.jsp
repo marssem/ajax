@@ -11,11 +11,11 @@
 <table border="1">
 	<tr>
 		<th>아이디</th>
-		<td><input type="text" id="id"></td>
+		<td><input type="text" id="id" name="id"></td>
 	</tr>
 	<tr>
 		<th>비밀번호</th>
-		<td><input type="passowrd" id="pwd"></td>
+		<td><input type="password" id="pwd" name="pwd"></td>
 	</tr>
 	<tr>
 		<th colspan="2"><button onclick="doLogin()">로그인</button></th>
@@ -23,11 +23,11 @@
 </table>
 <script >
 function doLogin(){
-	var id = document.querySelector('#id').value;
-	var pwd = document.querySelector('#pwd').value;
+	var ui_id = document.querySelector('#id').value;
+	var ui_password = document.querySelector('#pwd').value;
 	var params = {
-			id : id,
-			pwd : pwd
+			ui_id : document.querySelector('#id').value,
+			ui_password : document.querySelector('#pwd').value
 	}
 	
 	var xhr = new XMLHttpRequest();
@@ -44,6 +44,7 @@ function doLogin(){
 			}
 		}
 	}
+	
 }
 </script>
 </body>

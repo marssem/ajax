@@ -32,7 +32,6 @@ try {
 		e.printStackTrace();
 	}
 }
-
 %>
 
 </body>

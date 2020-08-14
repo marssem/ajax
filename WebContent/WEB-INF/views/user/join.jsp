@@ -8,9 +8,13 @@
 </head>
 <body>
 <script>
+var isChecked = false;
 
-
-function checkValue(){
+function checkValue(){ 
+	/* if(!isChecked){
+		alert('중복확인을 눌러주세요');
+		return false;
+	}  */
 	var ui_id = document.querySelector('#ui_id');
 	if(ui_id.value.trim().length<4){
 		alert('아이디를 확인해 주세요.');
@@ -37,7 +41,7 @@ function checkValue(){
 		return false;
 	}
 	var ui_birth = document.querySelector('#ui_birth');
-	alert(ui_birth.value);
+	/* alert(ui_birth.value); */
 	if(!ui_birth.value){
 		alert('생년월일을 확인해 주세요.');
 		ui_birth.focus();
@@ -49,15 +53,9 @@ function checkValue(){
 		ui_phone.focus();
 		return false;
 	}
-	var ui_email = document.querySelector('#ui_email');
-	if(!ui_email.value){
-		alert('이메일을 확인해 주세요.');
-		ui_email.focus();
-		return false;
-	}
 	var ui_nickname = document.querySelector('#ui_nickname');
-	if(!ui_nickname.value){
-		alert('닉네임을 확인해 주세요.');
+	if(ui_nickname.value.trim().length<2){
+		alert('별명은 2글자 이상입니다.');
 		ui_nickname.focus();
 		return false;
 	}
@@ -75,7 +73,6 @@ function checkId(){
 				if(res.result=='true'){
 					isChecked = true;
 				}
-				
 			}
 		}
 	}
@@ -83,7 +80,7 @@ function checkId(){
 }
 </script>
 <form action="/user/join" method="post" onsubmit="return checkValue()">
-	ID : <input type="text" name="ui_id" id="ui_id"> 
+	ID : <input type="text" name="ui_id" id="ui_id" onchange="isChecked = false;"> 
 	<button type="button" onclick="checkId()">중복확인</button><br>
 	PWD : <input type="password" name="ui_pwd" id="ui_pwd"><br>
 	이름 : <input type="text" name="ui_name" id="ui_name"><br>
